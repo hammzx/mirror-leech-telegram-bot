@@ -65,10 +65,6 @@ def start(update, context):
         start_string = f'''
 𝗧𝗵𝗶𝘀 𝗯𝗼𝘁 𝗰𝗮𝗻 𝗺𝗶𝗿𝗿𝗼𝗿 𝗮𝗹𝗹 𝘆𝗼𝘂𝗿 𝗹𝗶𝗻𝗸𝘀 𝘁𝗼 𝗚𝗼𝗼𝗴𝗹𝗲 𝗗𝗿𝗶𝘃𝗲!
 𝗧𝘆𝗽𝗲 /{BotCommands.HelpCommand} 𝘁𝗼 𝗴𝗲𝘁 𝗮 𝗹𝗶𝘀𝘁 𝗼𝗳 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀.
-'''
-        update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
-    else:
-        sendMessage('𝚈𝚘𝚞 𝚗𝚘𝚝 𝙰𝚞𝚝𝚑𝚘𝚛𝚒𝚣𝚎𝚍 𝚞𝚜𝚎𝚛, 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 𝚝𝚑𝚎 𝚘𝚠𝚗𝚎𝚛 𝚝𝚘 𝚐𝚎𝚝 𝚊𝚌𝚌𝚎𝚜𝚜.', context.bot, update)
 
 
         sendMarkup(start_string, context.bot, update, reply_markup)
