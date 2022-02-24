@@ -70,6 +70,7 @@ def start(update, context):
     else:
         sendMessage('𝚈𝚘𝚞 𝚗𝚘𝚝 𝙰𝚞𝚝𝚑𝚘𝚛𝚒𝚣𝚎𝚍 𝚞𝚜𝚎𝚛, 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 𝚝𝚑𝚎 𝚘𝚠𝚗𝚎𝚛 𝚝𝚘 𝚐𝚎𝚝 𝚊𝚌𝚌𝚎𝚜𝚜.', context.bot, update)
 
+
         sendMarkup(start_string, context.bot, update, reply_markup)
     else:
         sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update, reply_markup)
