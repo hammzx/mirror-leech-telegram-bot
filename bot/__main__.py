@@ -9,7 +9,7 @@ from sys import executable
 from telegram import ParseMode, InlineKeyboardMarkup
 from telegram.ext import CommandHandler
 
-from bot import bot, app, dispatcher, updater, botStartTime, IGNORE_PENDING_REQUESTS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, LOGGER, Interval, rss_session, a2c
+from bot import bot, app, dispatcher, updater, botStartTime, IMAGE_URL, IGNORE_PENDING_REQUESTS, PORT, alive, web, OWNER_ID, AUTHORIZED_CHATS, LOGGER, Interval, rss_session, a2c
 from .helper.ext_utils.fs_utils import start_cleanup, clean_all, exit_clean_up
 from .helper.telegram_helper.bot_commands import BotCommands
 from .helper.telegram_helper.message_utils import sendMessage, sendMarkup, editMessage, sendLogFile
@@ -54,24 +54,23 @@ def stats(update, context):
             f'<b>Memory Total:</b> {mem_t}\n'\
             f'<b>Memory Free:</b> {mem_a}\n'\
             f'<b>Memory Used:</b> {mem_u}\n'
-    sendMessage(stats, context.bot, update)
-
+    update.effective_message.reply_photo(IMAGE_URL, stats, parse_mode=ParseMode.HTML)
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("𝐎 𝐖 𝐍 𝐄 𝐑", "https://t.me/mrmellaada")
+    buttons.buildbutton("𝐎 𝐖 𝐍 𝐄 𝐑", "https://t.me/xxyznxx")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
 𝗧𝗵𝗶𝘀 𝗯𝗼𝘁 𝗰𝗮𝗻 𝗺𝗶𝗿𝗿𝗼𝗿 𝗮𝗹𝗹 𝘆𝗼𝘂𝗿 𝗹𝗶𝗻𝗸𝘀 𝘁𝗼 𝗚𝗼𝗼𝗴𝗹𝗲 𝗗𝗿𝗶𝘃𝗲!
 𝗧𝘆𝗽𝗲 /{BotCommands.HelpCommand} 𝘁𝗼 𝗴𝗲𝘁 𝗮 𝗹𝗶𝘀𝘁 𝗼𝗳 𝗮𝘃𝗮𝗶𝗹𝗮𝗯𝗹𝗲 𝗰𝗼𝗺𝗺𝗮𝗻𝗱𝘀.
 '''
-        sendMarkup(start_string, context.bot, update, reply_markup)
+        update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
     else:
-        sendMarkup('Not Authorized user, deploy your own mirror-leech bot', context.bot, update, reply_markup)
+        sendMessage('𝚈𝚘𝚞 𝚗𝚘𝚝 𝙰𝚞𝚝𝚑𝚘𝚛𝚒𝚣𝚎𝚍 𝚞𝚜𝚎𝚛, 𝚌𝚘𝚗𝚝𝚊𝚌𝚝 𝚝𝚑𝚎 𝚘𝚠𝚗𝚎𝚛 𝚝𝚘 𝚐𝚎𝚝 𝚊𝚌𝚌𝚎𝚜𝚜.', context.bot, update)
 
 def restart(update, context):
-    restart_message = sendMessage("Restarting...", context.bot, update)
+    restart_message = sendMessage("𝚁𝚎𝚜𝚝𝚊𝚛𝚝𝚒𝚗𝚐...", context.bot, update)
     if Interval:
         Interval[0].cancel()
     alive.kill()
@@ -171,9 +170,9 @@ help_string_telegraph = f'''<br>
 '''
 
 help = telegraph.create_page(
-        title='MirrorGG Help',
+        title='Mirrorlilis Help',
         content=help_string_telegraph,
-    )["path"]
+   )["path"]
 
 help_string_telegraph2 = f'''
 /{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
@@ -199,12 +198,12 @@ help_string_telegraph2 = f'''
 /{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
 '''
 help_tgh = telegraph.create_page(
-        title='MirrorGG Help',
+        title='Mirrorlilis Help',
         content=help_string_telegraph2,
     )["path"]
 
- helps = f'''<i><b>𝗧𝗵𝗶𝘀 𝗯𝘂𝘁𝘁𝗼𝗻 𝗰𝗮𝗻 𝗵𝗲𝗹𝗽𝗶𝗻𝗴 𝘆𝗼𝘂 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗶𝘀 𝗯𝗼𝘁</b></i>'''
-
+helps = f'''<i><b>𝗧𝗵𝗶𝘀 𝗯𝘂𝘁𝘁𝗼𝗻 𝗰𝗮𝗻 𝗵𝗲𝗹𝗽𝗶𝗻𝗴 𝘆𝗼𝘂 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗶𝘀 𝗯𝗼𝘁</b></i>'''
+ 
 def bot_help(update, context):
     buttons = ButtonMaker()
     buttons.buildbutton("𝗠𝗮𝗶𝗻 𝗠𝗲𝗻𝘂", f"https://telegra.ph/{help}")
@@ -212,8 +211,7 @@ def bot_help(update, context):
     buttons.buildbutton("𝗡𝗼𝘁𝗲𝘀 𝗙𝗲𝗮𝘁𝘂𝗿𝗲", f"https://telegra.ph/Magneto-Python-Aria---Custom-Filename-Examples-01-20")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(1))
     sendMarkup(helps, context.bot, update, reply_markup)
- 
- 
+
 botcmds = [
 
         (f'{BotCommands.MirrorCommand}', 'Mirror'),
@@ -255,11 +253,11 @@ def main():
     if ospath.isfile(".restartmsg"):
         with open(".restartmsg") as f:
             chat_id, msg_id = map(int, f)
-        bot.edit_message_text("Restarted successfully!", chat_id, msg_id)
+        bot.edit_message_text("𝚁𝚎𝚜𝚝𝚊𝚛𝚝𝚎𝚍 𝚜𝚞𝚌𝚌𝚎𝚜𝚜𝚏𝚞𝚕𝚕𝚢!", chat_id, msg_id)
         osremove(".restartmsg")
     elif OWNER_ID:
         try:
-            text = "<b>Bot Restarted!</b>"
+            text = "<b>𝙱𝚘𝚝 𝚁𝚎𝚜𝚝𝚊𝚛𝚝𝚎𝚍!</b>"
             bot.sendMessage(chat_id=OWNER_ID, text=text, parse_mode=ParseMode.HTML)
             if AUTHORIZED_CHATS:
                 for i in AUTHORIZED_CHATS:
