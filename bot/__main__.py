@@ -198,12 +198,6 @@ help_string = f'''
 
 /{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
 '''
-help_tgh = telegraph.create_page(
-        title='MirrorGG Help',
-        content=help_string_telegraph2,
-    )["path"]
-
-helps = f'''<i><b>𝗧𝗵𝗶𝘀 𝗯𝘂𝘁𝘁𝗼𝗻 𝗰𝗮𝗻 𝗵𝗲𝗹𝗽𝗶𝗻𝗴 𝘆𝗼𝘂 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗶𝘀 𝗯𝗼𝘁</b></i>'''
 
 def bot_help(update, context):
     buttons = ButtonMaker()
