@@ -171,11 +171,11 @@ help_string_telegraph = f'''<br>
 '''
 
 help = telegraph.create_page(
-        title='Mirror-Leech-Bot Help',
+        title='MirrorGG Help',
         content=help_string_telegraph,
     )["path"]
 
-help_string = f'''
+help_string_telegraph2 = f'''
 /{BotCommands.PingCommand}: Check how long it takes to Ping the Bot
 
 /{BotCommands.AuthorizeCommand}: Authorize a chat or a user to use the bot (Can only be invoked by Owner & Sudo of the bot)
@@ -198,13 +198,22 @@ help_string = f'''
 
 /{BotCommands.ExecHelpCommand}: Get help for Executor module (Only Owner)
 '''
+help_tgh = telegraph.create_page(
+        title='MirrorGG Help',
+        content=help_string_telegraph2,
+    )["path"]
+
+ helps = f'''<i><b>𝗧𝗵𝗶𝘀 𝗯𝘂𝘁𝘁𝗼𝗻 𝗰𝗮𝗻 𝗵𝗲𝗹𝗽𝗶𝗻𝗴 𝘆𝗼𝘂 𝘁𝗼 𝘂𝘀𝗲 𝘁𝗵𝗶𝘀 𝗯𝗼𝘁</b></i>'''
 
 def bot_help(update, context):
-    button = ButtonMaker()
-    button.buildbutton("Other Commands", f"https://telegra.ph/{help}")
-    reply_markup = InlineKeyboardMarkup(button.build_menu(1))
-    sendMarkup(help_string, context.bot, update, reply_markup)
-
+    buttons = ButtonMaker()
+    buttons.buildbutton("𝗠𝗮𝗶𝗻 𝗠𝗲𝗻𝘂", f"https://telegra.ph/{help}")
+    buttons.buildbutton("𝗔𝗱𝘃𝗮𝗻𝗰𝗲 𝗖𝗠𝗗", f"https://telegra.ph/{help_tgh}")
+    buttons.buildbutton("𝗡𝗼𝘁𝗲𝘀 𝗙𝗲𝗮𝘁𝘂𝗿𝗲", f"https://telegra.ph/Magneto-Python-Aria---Custom-Filename-Examples-01-20")
+    reply_markup = InlineKeyboardMarkup(buttons.build_menu(1))
+    sendMarkup(helps, context.bot, update, reply_markup)
+ 
+ 
 botcmds = [
 
         (f'{BotCommands.MirrorCommand}', 'Mirror'),
