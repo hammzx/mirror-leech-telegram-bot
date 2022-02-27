@@ -58,7 +58,7 @@ def stats(update, context):
 
 def start(update, context):
     buttons = ButtonMaker()
-    buttons.buildbutton("𝐎 𝐖 𝐍 𝐄 𝐑", "https://t.me/mrmellaada")
+    buttons.buildbutton("𝐎 𝐖 𝐍 𝐄 𝐑", "https://t.me/racebizz")
     reply_markup = InlineKeyboardMarkup(buttons.build_menu(2))
     if CustomFilters.authorized_user(update) or CustomFilters.authorized_chat(update):
         start_string = f'''
@@ -68,7 +68,7 @@ def start(update, context):
         update.effective_message.reply_photo(IMAGE_URL, start_string, parse_mode=ParseMode.MARKDOWN, reply_markup=reply_markup)
     else:
         sendMessage('ᴏᴏᴘꜱ! ɴᴏᴛ ᴀ ᴀᴜᴛʜᴏʀɪᴢᴇᴅ ᴜꜱᴇʀ.', context.bot, update)
-        buttons.buildbutton("𝐎 𝐖 𝐍 𝐄 𝐑", "https://t.me/mrmellaada")
+        buttons.buildbutton("𝐎 𝐖 𝐍 𝐄 𝐑", "https://t.me/racebizz")
 
 def restart(update, context):
     restart_message = sendMessage("𝚁𝚎𝚜𝚝𝚊𝚛𝚝𝚒𝚗𝚐...", context.bot, update)
